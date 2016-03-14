@@ -16,8 +16,7 @@ if r.status_code == 200:
 else:
   print "Failed to read tickets, errors are displayed below,"
   response = json.loads(r.content)
-  errors = response["errors"]
-  for error in errors:
-      print "Field : " + error["field"] + " |  Message : " + error["message"] + " | Code : " + error["code"]
+  print response["errors"]
 
   print "x-request-id : " + r.headers['x-request-id']
+  print "Status Code : " + str(r.status_code)
