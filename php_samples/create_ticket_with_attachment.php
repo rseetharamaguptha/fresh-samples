@@ -40,13 +40,9 @@ if($info['http_code'] == 201) {
     echo "Error, Please check the end point \n";
   } else {
     echo "Error, HTTP Status Code : " . $info['http_code'] . "\n";
-    echo "Headers are ".$headers."\n";
-    $response_data = json_decode($response);
-    foreach ($response_data->{'errors'} as $error) {
-        echo "Field : ".$error->{'field'} . " | Message : ".$error->{'message'} . " | Code : ".$error->{'code'} ."\n";
-    }  
+    echo "Headers are ".$headers;
+    echo "Response are ".$response;
   }
-
 }
 
 curl_close($ch);

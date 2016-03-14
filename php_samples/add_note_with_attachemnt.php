@@ -4,12 +4,11 @@ $api_key = "API_KEY";
 $password = "x";
 $yourdomain = "YOUR_DOMAIN";
 
-// Note will be added to the ticket with the following id
-$ticket_id = 40;
+// Reply will be added to the ticket with the following id
+$ticket_id = 57;
 
 $note_payload = array(
-  'body' => 'New Content',
-  'private' => 'false',
+  'body' => 'This is a sample reply',
   'attachments[]' =>  curl_file_create("data/x.png", "image/png", "x.png")
 );
 
@@ -36,12 +35,13 @@ if($info['http_code'] == 201) {
   echo "Response Body \n";
   echo "$response \n";
 } else {
-  echo "Error, HTTP Status Code : " . $info['http_code'] . "\n";
-  echo "Headers are ".$headers."\n";
-  $response_data = json_decode($response);
-  foreach ($response_data->{'errors'} as $error) {
-      echo "Field : ".$error->{'field'} . " | Message : ".$error->{'message'} . " | Code : ".$error->{'code'} ."\n";
-    }  
+    if($info['http_code'] == 404) {
+    echo "Error, Please check the end point \n";
+  } else {
+    echo "Error, HTTP Status Code : " . $info['http_code'] . "\n";
+    echo "Headers are ".$headers."\n";
+    echo "Response is ".$response;
+  }
 }
 
 curl_close($ch);

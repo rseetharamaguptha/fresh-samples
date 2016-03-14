@@ -5,13 +5,12 @@ $password = "x";
 $yourdomain = "YOUR_DOMAIN";
 
 $custom_fields = array(
-  "Department" => "Sales"
+  "department" => "Sales"
 );
 
 $contact_data = json_encode(array(
 	"name" => "Tom Cruise",
-  "email" => "tom1@outerspace.com",
-  "custom_fields" => $custom_fields
+  "email" => "tom@outerspace.com"
 ));
 
 $url = "https://$yourdomain.freshdesk.com/api/v2/contacts";
@@ -39,18 +38,12 @@ if($info['http_code'] == 201) {
   echo "Response Body \n";
   echo "$response \n";
 } else {
-
-  if($info['http_code'] == 404)
-  {
+  if($info['http_code'] == 404) {
     echo "Error, Please check the end point \n";
   } else {
     echo "Error, HTTP Status Code : " . $info['http_code'] . "\n";
-    echo "Headers are ".$headers;
-    $response_data = json_decode($response);
-
-    foreach ($response_data->{'errors'} as $error) {
-        echo "Field : ".$error->{'field'} . " | Message : ".$error->{'message'} . " | Code : ".$error->{'code'} ."\n";
-    }  
+    echo "Headers are ".$headers."\n";
+    echo "Response is ".$response;
   }
 }
 

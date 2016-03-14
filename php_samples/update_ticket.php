@@ -44,17 +44,12 @@ if($info['http_code'] == 200) {
   echo "Response Body \n";
   echo "$response \n";
 } else {
-
   if($info['http_code'] == 404) {
     echo "Error, Please check the end point \n";
   } else {
     echo "Error, HTTP Status Code : " . $info['http_code'] . "\n";
     echo "Headers are ".$headers;
-    $response_data = json_decode($response);
-
-    foreach ($response_data->{'errors'} as $error) {
-        echo "Field : ".$error->{'field'} . " | Message : ".$error->{'message'} . " | Code : ".$error->{'code'} ."\n";
-    }  
+    echo "Response are ".$response;
   }
 }
 
