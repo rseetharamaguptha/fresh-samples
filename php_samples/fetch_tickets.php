@@ -4,7 +4,9 @@ $api_key = "API_KEY";
 $password = "x";
 $yourdomain = "YOUR_DOMAIN";
 
-$url = "https://$yourdomain.freshdesk.com/api/v2/tickets";
+// Return the tickets that are new or opend & assigned to you
+// If you want to fetch all tickets remove the filter query param
+$url = "https://$yourdomain.freshdesk.com/api/v2/tickets?filter=new_and_my_open";
 
 $ch = curl_init($url);
 

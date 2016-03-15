@@ -8,7 +8,9 @@ api_key = "YOUR_API_KEY"
 domain = "YOUR_DOMAIN"
 password = "x"
 
-r = requests.get("https://"+ domain +".freshdesk.com/api/v2/tickets", auth = (api_key, password))
+# Return the tickets that are new or opend & assigned to you
+# If you want to fetch all tickets remove the filter query param
+r = requests.get("https://"+ domain +".freshdesk.com/api/v2/tickets?filter=new_and_my_open", auth = (api_key, password))
 
 if r.status_code == 200:
   print "Request processed successfully, the response is given below"
