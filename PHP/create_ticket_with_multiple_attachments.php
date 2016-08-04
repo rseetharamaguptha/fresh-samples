@@ -42,7 +42,7 @@ $data .= "2" . $eol;
 
 $data .= '--' . $mime_boundary . $eol;
 $data .= 'Content-Disposition: form-data; name="status"' . $eol . $eol;
-$data .= "a" . $eol;
+$data .= "2" . $eol;
 
 
 $data .= '--' . $mime_boundary . $eol;
